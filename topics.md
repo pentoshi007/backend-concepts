@@ -11,23 +11,24 @@ A comprehensive guide to backend development fundamentals using Node.js, Express
 | 01 | [How the Server Works (Request–Response Cycle)](./01-how-the-server-works.md) | ✅ Complete |
 | 02 | [REST API Design Principles](./02-rest-api-design-principles.md) | ✅ Complete |
 | 03 | [HTTP Methods & Status Codes](./03-http-methods-and-status-codes.md) | ✅ Complete |
-| 04 | Middleware & Request Flow | ⏳ Pending |
-| 05 | Authentication vs Authorization | ⏳ Pending |
-| 06 | Event Loop & Non-Blocking I/O | ⏳ Pending |
-| 07 | Async/Await & Promises | ⏳ Pending |
-| 08 | Error Handling & Global Error Middleware | ⏳ Pending |
-| 09 | Environment Variables & Config Management | ⏳ Pending |
-| 10 | Logging & Debugging | ⏳ Pending |
-| 11 | SQL vs NoSQL (When to Use What) | ⏳ Pending |
-| 12 | Database Schema Design | ⏳ Pending |
-| 13 | Indexing & Query Optimization | ⏳ Pending |
-| 14 | Transactions & ACID Properties | ⏳ Pending |
-| 15 | Relationships (1–1, 1–Many, Many–Many) | ⏳ Pending |
-| 16 | JWT, Sessions & Cookies | ⏳ Pending |
-| 17 | Password Hashing & Security Best Practices | ⏳ Pending |
-| 18 | Rate Limiting & Caching (Redis) | ⏳ Pending |
-| 19 | Scalability Concepts (Load Balancing, Horizontal Scaling) | ⏳ Pending |
-| 20 | API Versioning & Deployment Basics | ⏳ Pending |
+| 04 | [Request & Response Headers](./04-request-response-headers.md) | ✅ Complete |
+| 05 | Middleware & Request Flow | ⏳ Pending |
+| 06 | Authentication vs Authorization | ⏳ Pending |
+| 07 | Event Loop & Non-Blocking I/O | ⏳ Pending |
+| 08 | Async/Await & Promises | ⏳ Pending |
+| 09 | Error Handling & Global Error Middleware | ⏳ Pending |
+| 10 | Environment Variables & Config Management | ⏳ Pending |
+| 11 | Logging & Debugging | ⏳ Pending |
+| 12 | SQL vs NoSQL (When to Use What) | ⏳ Pending |
+| 13 | Database Schema Design | ⏳ Pending |
+| 14 | Indexing & Query Optimization | ⏳ Pending |
+| 15 | Transactions & ACID Properties | ⏳ Pending |
+| 16 | Relationships (1–1, 1–Many, Many–Many) | ⏳ Pending |
+| 17 | JWT, Sessions & Cookies | ⏳ Pending |
+| 18 | Password Hashing & Security Best Practices | ⏳ Pending |
+| 19 | Rate Limiting & Caching (Redis) | ⏳ Pending |
+| 20 | Scalability Concepts (Load Balancing, Horizontal Scaling) | ⏳ Pending |
+| 21 | API Versioning & Deployment Basics | ⏳ Pending |
 
 ---
 
@@ -67,21 +68,21 @@ Each topic follows a consistent structure:
 ## Progress Tracker
 
 ```
-[███░░░░░░░░░░░░░░░░░] 3/20 Complete (15%)
+[████░░░░░░░░░░░░░░░░] 4/21 Complete (19%)
 ```
 
 ---
 
 ## Quick Links
 
-### Fundamentals (Topics 1-5)
-- Server basics, REST, HTTP, Middleware, Auth concepts
+### Fundamentals (Topics 1-6)
+- Server basics, REST, HTTP methods, Headers, Middleware, Auth concepts
 
-### Node.js Core (Topics 6-10)
-- Event loop, async patterns, error handling, logging
+### Node.js Core (Topics 7-11)
+- Event loop, async patterns, error handling, config, logging
 
-### Databases (Topics 11-15)
-- SQL vs NoSQL, schema design, optimization, transactions
+### Databases (Topics 12-16)
+- SQL vs NoSQL, schema design, optimization, transactions, relationships
 
-### Security & Performance (Topics 16-20)
+### Security & Performance (Topics 17-21)
 - Authentication, hashing, caching, scaling, deployment
