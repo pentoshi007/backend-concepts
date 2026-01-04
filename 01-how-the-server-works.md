@@ -140,28 +140,24 @@ src/
 ### server.js
 ```javascript
 // server.js
-// This is where Node.js actually creates the HTTP server.
+// Entry point for the Express application.
 // We separate this from app.js for testing purposes.
 
-const http = require('http');
 const app = require('./app');
 
 const PORT = process.env.PORT || 3000;
 
-// http.createServer takes our Express app as a request handler.
-// Under the hood, Express is just a function that takes (req, res).
-const server = http.createServer(app);
-
-// The 'listen' method tells the OS to start accepting TCP connections
-// on the specified port. Node.js uses libuv to manage these connections.
-server.listen(PORT, () => {
+// Express's listen() method creates an HTTP server internally.
+// Under the hood, it calls Node's http.createServer(app) for you.
+// This is the standard way to start an Express server.
+app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
     console.log(`Process ID: ${process.pid}`);
 });
 
 // When a request comes in:
 // 1. OS receives TCP packets on port 3000
-// 2. OS notifies Node.js via libuv
+// 2. OS notifies Node.js via libuv (C library)
 // 3. Node.js parses HTTP and creates req/res objects
 // 4. Express handles the request through middleware chain
 ```
@@ -446,16 +442,17 @@ app.use((req, res, next) => {
 
 ### What Happens Under the Hood
 
-When Node.js calls `http.createServer(app)`:
+When Express calls `app.listen(PORT)`:
 
-1. **libuv** (Node's C library) creates a TCP socket bound to the port
-2. The OS kernel manages incoming connections
-3. When data arrives, the kernel notifies libuv
-4. libuv puts a callback in the **event queue**
-5. The **event loop** picks up the callback
-6. Node.js parses raw TCP data into HTTP
-7. Express wraps it in `req`/`res` objects
-8. Your middleware/routes execute
+1. Express internally calls Node's `http.createServer(app)`
+2. **libuv** (Node's C library) creates a TCP socket bound to the port
+3. The OS kernel manages incoming connections
+4. When data arrives, the kernel notifies libuv
+5. libuv puts a callback in the **event queue**
+6. The **event loop** picks up the callback
+7. Node.js parses raw TCP data into HTTP
+8. Express wraps it in enhanced `req`/`res` objects with helper methods
+9. Your middleware chain and routes execute
 
 This is why Node.js is "non-blocking"—it never waits for I/O. It registers callbacks and moves on.
 

@@ -193,6 +193,7 @@ Let's build a RESTful API for a bookstore.
 
 ```
 src/
+├── server.js
 ├── app.js
 ├── routes/
 │   ├── index.js
@@ -208,6 +209,22 @@ src/
 │   └── index.js
 └── utils/
     └── responseHandler.js
+```
+
+### server.js
+```javascript
+// server.js
+// Entry point - starts the Express server.
+
+const app = require('./app');
+
+const PORT = process.env.PORT || 3000;
+
+// Express's listen() creates the HTTP server and starts listening.
+app.listen(PORT, () => {
+    console.log(`Bookstore API running on port ${PORT}`);
+    console.log(`API Base URL: http://localhost:${PORT}/api/v1`);
+});
 ```
 
 ### utils/responseHandler.js
