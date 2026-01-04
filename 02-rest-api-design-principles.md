@@ -614,20 +614,40 @@ const express = require('express');
 const router = express.Router();
 const bookController = require('../controllers/bookController');
 
-// Collection routes (plural noun)
-router.route('/')
-    .get(bookController.getAll)      // GET    /books - List all books
-    .post(bookController.create);    // POST   /books - Create new book
+// Collection routes: /books
+router.get('/', bookController.getAll);       // GET  /books - List all books
+router.post('/', bookController.create);      // POST /books - Create new book
 
-// Individual resource routes (with ID)
-router.route('/:id')
-    .get(bookController.getById)     // GET    /books/:id - Get single book
-    .put(bookController.replace)     // PUT    /books/:id - Replace entire book
-    .patch(bookController.update)    // PATCH  /books/:id - Partial update
-    .delete(bookController.delete);  // DELETE /books/:id - Delete book
+// Single resource routes: /books/:id
+router.get('/:id', bookController.getById);      // GET    /books/:id - Get single book
+router.put('/:id', bookController.replace);      // PUT    /books/:id - Replace entire book
+router.patch('/:id', bookController.update);     // PATCH  /books/:id - Partial update
+router.delete('/:id', bookController.delete);    // DELETE /books/:id - Delete book
 
 module.exports = router;
 ```
+
+> **Note on Express Router Syntax:**
+> Express supports two ways to define routes:
+>
+> **1. Standard syntax (recommended, shown above):**
+> ```javascript
+> router.get('/users', controller.getAll);
+> router.post('/users', controller.create);
+> ```
+>
+> **2. Chained syntax (less common):**
+> ```javascript
+> router.route('/users')
+>     .get(controller.getAll)
+>     .post(controller.create);
+> ```
+>
+> Both are valid, but the standard syntax is more widely used in production codebases because:
+> - It's easier to read at a glance
+> - Simpler to add middleware to individual routes
+> - More familiar to most developers
+> - Easier to reorder or comment out single routes
 
 ### routes/index.js
 ```javascript

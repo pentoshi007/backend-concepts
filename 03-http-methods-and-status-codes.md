@@ -776,24 +776,19 @@ module.exports = { allowMethods };
 const express = require('express');
 const router = express.Router();
 const productController = require('../controllers/productController');
-const { allowMethods } = require('../middleware/methodValidator');
 
 // Collection routes: /products
-router.route('/')
-    .get(productController.getAll)       // GET - List all products
-    .post(productController.create)      // POST - Create new product
-    .options(productController.options)  // OPTIONS - CORS preflight
-    .all(allowMethods('GET', 'POST', 'OPTIONS')); // Block other methods
+router.get('/', productController.getAll);          // GET     - List all products
+router.post('/', productController.create);         // POST    - Create new product
+router.options('/', productController.options);     // OPTIONS - CORS preflight
 
 // Single resource routes: /products/:id
-router.route('/:id')
-    .get(productController.getById)           // GET - Retrieve product
-    .head(productController.checkExists)      // HEAD - Check existence
-    .put(productController.replace)           // PUT - Replace product
-    .patch(productController.update)          // PATCH - Update product
-    .delete(productController.delete)         // DELETE - Remove product
-    .options(productController.optionsById)   // OPTIONS - CORS preflight
-    .all(allowMethods('GET', 'HEAD', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'));
+router.get('/:id', productController.getById);          // GET     - Retrieve product
+router.head('/:id', productController.checkExists);     // HEAD    - Check existence
+router.put('/:id', productController.replace);          // PUT     - Replace product
+router.patch('/:id', productController.update);         // PATCH   - Update product
+router.delete('/:id', productController.delete);        // DELETE  - Remove product
+router.options('/:id', productController.optionsById);  // OPTIONS - CORS preflight
 
 module.exports = router;
 ```
